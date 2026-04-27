@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ParticleTextEffect } from "@/components/ui/particle-text-effect";
 
 const container = {
   hidden: { opacity: 0 },
@@ -48,35 +49,28 @@ export default function HeroSection() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="flex max-w-4xl flex-col items-center gap-8"
+        className="flex w-full max-w-4xl flex-col items-center gap-6"
       >
         {/* Badge */}
         <motion.div variants={fadeUp}>
           <Badge />
         </motion.div>
 
-        {/* H1 */}
-        <motion.h1
-          variants={fadeUp}
-          className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
-          style={{ color: "#fafafa" }}
-        >
-          Pare de Perder{" "}
-          <span style={{ color: "#007bff" }}>Clientes no Google Maps</span>{" "}
-          para Concorrentes que{" "}
-          <span style={{ color: "#007bff" }}>Parecem Mais Profissionais.</span>
-        </motion.h1>
+        {/* Particle text — replaces the static H1 */}
+        <motion.div variants={fadeUp} className="w-full">
+          <ParticleTextEffect words={["SEIKODE", "CONVERSÃO", "ACELERAÇÃO"]} />
+        </motion.div>
 
-        {/* H2 */}
+        {/* Subtitle H2 */}
         <motion.p
           variants={fadeUp}
           className="max-w-2xl text-lg leading-relaxed sm:text-xl"
           style={{ color: "#a1a1aa" }}
         >
-          Criamos um site profissional para o seu negócio local em{" "}
-          <strong style={{ color: "#fafafa" }}>poucos dias</strong> — sem
-          complicação, sem mensalidade absurda, com resultado real em
-          conversão e autoridade digital.
+          Pare de perder clientes no Google Maps para concorrentes que parecem
+          mais profissionais. Criamos o seu site em{" "}
+          <strong style={{ color: "#fafafa" }}>poucos dias</strong> — direto ao
+          ponto, focado em conversão.
         </motion.p>
 
         {/* CTA */}
