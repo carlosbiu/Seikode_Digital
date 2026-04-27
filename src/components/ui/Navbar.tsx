@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -33,14 +32,8 @@ export default function Navbar() {
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           {/* Logo */}
           <a href="#inicio" className="flex-shrink-0 focus-visible:outline-none">
-            <Image
-              src="/logo-seikode.svg"
-              alt="Seikode"
-              width={140}
-              height={36}
-              priority
-              className="h-8 w-auto"
-            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-seikode.png" alt="Seikode" className="h-10 w-auto object-contain" />
           </a>
 
           {/* Desktop nav links */}
