@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Flame, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Plan {
@@ -132,11 +132,22 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
-        {/* Scarcity warning */}
-        <div className="mt-16 mx-auto max-w-3xl p-6 rounded-2xl bg-orange-950/30 border border-orange-500/30 text-center shadow-lg shadow-orange-900/10">
-          <p className="text-orange-200 text-sm md:text-base">
-            ⚠️ <strong className="text-orange-400 font-semibold">Atenção:</strong> Para garantirmos a entrega em poucos dias com qualidade máxima, atendemos <span className="text-white font-bold">apenas 4 novos projetos por semana</span>. Fale conosco agora para verificar a disponibilidade na agenda.
-          </p>
+        {/* Scarcity pill */}
+        <div className="mt-12 flex items-center justify-center">
+          <div
+            className="flex max-w-max items-center gap-2 rounded-full border px-6 py-2"
+            style={{
+              background: "rgba(249,115,22,0.08)",
+              borderColor: "rgba(249,115,22,0.2)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <Flame size={14} className="flex-shrink-0 text-orange-400" />
+            <p className="text-sm" style={{ color: "rgba(254,215,170,0.8)" }}>
+              <strong className="font-semibold text-orange-300">Atenção:</strong> Atendemos apenas{" "}
+              <span className="font-bold text-white">4 novos projetos por semana</span> para garantir qualidade.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -213,8 +224,16 @@ function PlanCard({ plan }: { plan: Plan }) {
       </ul>
 
       {/* CTA */}
-      <div className="mt-auto">
+      <div className="mt-auto flex flex-col gap-3">
         <CtaButton variant={plan.ctaVariant} label={plan.cta} />
+        {plan.ctaVariant !== "dark" && (
+          <div className="flex items-center justify-center gap-1.5">
+            <ShieldCheck size={13} className="flex-shrink-0 text-green-500" />
+            <span className="text-xs" style={{ color: "#a1a1aa" }}>
+              Risco Zero: Sua página no ar ou seu dinheiro de volta.
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
