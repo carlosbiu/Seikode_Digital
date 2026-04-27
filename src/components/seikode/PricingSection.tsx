@@ -87,7 +87,7 @@ const cardVariants = {
 
 export default function PricingSection() {
   return (
-    <section className="relative px-6 py-24 overflow-hidden" style={{ background: "#000105" }}>
+    <section className="relative px-6 py-24 overflow-hidden bg-transparent">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px"

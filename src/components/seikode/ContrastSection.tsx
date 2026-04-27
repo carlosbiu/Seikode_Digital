@@ -31,7 +31,7 @@ const solutionPoints = [
 
 export default function ContrastSection() {
   return (
-    <section className="relative px-6 py-24 overflow-hidden" style={{ background: "#000105" }}>
+    <section className="relative px-6 py-24 overflow-hidden bg-transparent">
       {/* Subtle section divider glow */}
       <div
         aria-hidden

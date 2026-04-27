@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/ui/Navbar";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import "./globals.css";
@@ -22,11 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} h-full`}>
+    <html lang="pt-BR" className={`${inter.variable} h-full`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <FloatingWhatsApp />
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" disableTransitionOnChange>
+          <Navbar />
+          {children}
+          <FloatingWhatsApp />
+        </ThemeProvider>
       </body>
     </html>
   );
