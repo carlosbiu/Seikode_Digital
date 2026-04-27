@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Flame, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Plan {
@@ -132,21 +132,16 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
-        {/* Scarcity pill */}
-        <div className="mt-12 flex items-center justify-center">
-          <div
-            className="flex max-w-max items-center gap-2 rounded-full border px-6 py-2"
-            style={{
-              background: "rgba(249,115,22,0.08)",
-              borderColor: "rgba(249,115,22,0.2)",
-              backdropFilter: "blur(12px)",
-            }}
-          >
-            <Flame size={14} className="flex-shrink-0 text-orange-400" />
-            <p className="text-sm" style={{ color: "rgba(254,215,170,0.8)" }}>
-              <strong className="font-semibold text-orange-300">Atenção:</strong> Atendemos apenas{" "}
-              <span className="font-bold text-white">4 novos projetos por semana</span> para garantir qualidade.
-            </p>
+        {/* Live status indicator */}
+        <div className="w-full flex justify-center mt-12">
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            <span className="text-sm" style={{ color: "#a1a1aa" }}>
+              <strong className="font-medium" style={{ color: "#e4e4e7" }}>Vagas limitadas:</strong> Atendemos apenas 4 novos projetos por semana.
+            </span>
           </div>
         </div>
       </div>
