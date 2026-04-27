@@ -1,6 +1,7 @@
 import HeroSection from "@/components/seikode/HeroSection";
 import ContrastSection from "@/components/seikode/ContrastSection";
 import PortfolioSection from "@/components/seikode/PortfolioSection";
+import TestimonialsSection from "@/components/ui/TestimonialsSection";
 import PricingSection from "@/components/seikode/PricingSection";
 import FaqAndCtaSection from "@/components/seikode/FaqAndCtaSection";
 import Footer from "@/components/seikode/Footer";
@@ -21,6 +22,10 @@ export default function Home() {
 
       <section id="portfolio">
         <PortfolioSection />
+      </section>
+
+      <section id="depoimentos">
+        <TestimonialsSection />
       </section>
 
       <section id="planos">
