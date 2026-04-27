@@ -23,7 +23,7 @@ const projects: Project[] = [
     name: "Aurum Barbershop",
     niche: "Barbearia",
     image: "/projeto-barbearia.png",
-    url: "https://barbearia-corleone-oedyhwbci-carlosbius-projects.vercel.app/",
+    url: "https://barbearia-aurum.vercel.app/",
   },
   {
     name: "Lorena Dias Saúde Estética",

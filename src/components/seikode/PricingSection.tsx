@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { Check, ShieldCheck, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const WA_NUMBER = "5527997742494";
+const wa = (msg: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+
 interface Plan {
   id: string;
   badge?: string;
@@ -15,6 +18,7 @@ interface Plan {
   features: string[];
   cta: string;
   ctaVariant: "outline" | "solid" | "dark";
+  whatsappHref: string;
   highlighted?: boolean;
 }
 
@@ -32,6 +36,7 @@ const plans: Plan[] = [
     ],
     cta: "Escolher Start",
     ctaVariant: "outline",
+    whatsappHref: wa("Olá! Tenho interesse no plano *Start* (R$ 300 — pagamento único). Pode me dar mais detalhes?"),
   },
   {
     id: "pro",
@@ -50,6 +55,7 @@ const plans: Plan[] = [
     cta: "Escolher Pro",
     ctaVariant: "solid",
     highlighted: true,
+    whatsappHref: wa("Olá! Tenho interesse no plano *Pro* (R$ 500 — pagamento único). Pode me dar mais detalhes?"),
   },
   {
     id: "ecosystem",
@@ -65,6 +71,7 @@ const plans: Plan[] = [
     ],
     cta: "Aplicar para o Ecossistema",
     ctaVariant: "dark",
+    whatsappHref: wa("Olá! Tenho interesse no plano *Ecossistema* (R$ 1.000 setup + R$ 300/mês). Pode me dar mais detalhes?"),
   },
 ];
 
@@ -103,10 +110,10 @@ export default function PricingSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           className="mb-16 flex flex-col items-center gap-4 text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#fafafa" }}>
+          <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl" style={{ color: "#fafafa" }}>
             Escolha o projeto ideal para o seu momento.
           </h2>
-          <p className="max-w-xl text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
+          <p className="max-w-xl text-base leading-relaxed" style={{ color: "#9ca3af" }}>
             Sem taxas ocultas. Transparência total para profissionalizar seu negócio.
           </p>
         </motion.div>
@@ -140,25 +147,36 @@ export default function PricingSection() {
 }
 
 function PlanCard({ plan }: { plan: Plan }) {
-  const borderStyle = plan.highlighted
-    ? { borderColor: "#007bff" }
-    : { borderColor: "rgba(255,255,255,0.08)" };
-
-  const shadowStyle = plan.highlighted
-    ? { boxShadow: "0 8px 40px rgba(0,123,255,0.18)" }
-    : {};
+  const isHighlighted = plan.highlighted;
 
   return (
-    <div
-      className="relative flex flex-col gap-8 rounded-2xl border p-8"
-      style={{ background: "#0b1021", ...borderStyle, ...shadowStyle }}
+    <div className="relative flex flex-col gap-8 rounded-2xl p-8"
+      style={{
+        background: isHighlighted ? "rgba(0,123,255,0.04)" : "#0b1021",
+        border: `1px solid ${isHighlighted ? "rgba(0,123,255,0.55)" : "rgba(255,255,255,0.07)"}`,
+        boxShadow: isHighlighted
+          ? "0 0 0 1px rgba(0,123,255,0.15), 0 8px 60px rgba(0,123,255,0.22), 0 0 120px rgba(0,123,255,0.08)"
+          : "none",
+      }}
     >
+      {/* Highlighted top glow strip */}
+      {isHighlighted && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-px inset-x-8 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(0,123,255,0.7), transparent)" }}
+        />
+      )}
+
       {/* Badge */}
       {plan.badge && (
-        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
           <span
-            className="inline-block rounded-full px-4 py-1 text-xs font-bold uppercase tracking-widest text-white"
-            style={{ background: "#007bff" }}
+            className="inline-flex items-center rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white"
+            style={{
+              background: "linear-gradient(90deg, #005bc0, #007bff)",
+              boxShadow: "0 4px 14px rgba(0,123,255,0.4)",
+            }}
           >
             {plan.badge}
           </span>
@@ -173,35 +191,48 @@ function PlanCard({ plan }: { plan: Plan }) {
         >
           {plan.title}
         </h3>
-        <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
+        <p className="text-sm leading-relaxed" style={{ color: "#9ca3af" }}>
           {plan.description}
         </p>
       </div>
 
       {/* Price */}
       <div className="flex flex-col gap-1">
-        <span className="text-4xl font-extrabold tracking-tight" style={{ color: "#fafafa" }}>
+        <span
+          className="text-4xl font-extrabold tracking-tight"
+          style={{ color: isHighlighted ? "#60a5fa" : "#fafafa" }}
+        >
           {plan.price}
         </span>
-        <span className="text-xs" style={{ color: "#a1a1aa" }}>
+        <span className="text-xs" style={{ color: "#6b7280" }}>
           {plan.priceNote}
         </span>
       </div>
 
       {/* Divider */}
-      <div className="h-px w-full" style={{ background: "rgba(255,255,255,0.07)" }} />
+      <div
+        className="h-px w-full"
+        style={{
+          background: isHighlighted
+            ? "linear-gradient(90deg, transparent, rgba(0,123,255,0.25), transparent)"
+            : "rgba(255,255,255,0.06)",
+        }}
+      />
 
       {/* Features */}
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3.5">
         {plan.features.map((feat) => (
           <li key={feat} className="flex items-start gap-3">
             <span
               className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full"
-              style={{ background: "rgba(0,123,255,0.12)" }}
+              style={{
+                background: isHighlighted ? "rgba(0,123,255,0.18)" : "rgba(0,123,255,0.1)",
+                boxShadow: isHighlighted ? "0 0 8px rgba(0,123,255,0.3)" : "none",
+              }}
             >
               <Check size={11} style={{ color: "#007bff" }} />
             </span>
-            <span className="text-sm leading-relaxed" style={{ color: "#fafafa" }}>
+            <span className="text-sm leading-relaxed" style={{ color: "#e5e7eb" }}>
               {feat}
             </span>
           </li>
@@ -210,11 +241,11 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       {/* CTA */}
       <div className="mt-auto flex flex-col gap-3">
-        <CtaButton variant={plan.ctaVariant} label={plan.cta} />
+        <CtaButton variant={plan.ctaVariant} label={plan.cta} href={plan.whatsappHref} />
         {plan.ctaVariant !== "dark" && (
           <div className="flex items-center justify-center gap-1.5">
             <ShieldCheck size={13} className="flex-shrink-0 text-green-500" />
-            <span className="text-xs" style={{ color: "#a1a1aa" }}>
+            <span className="text-xs" style={{ color: "#6b7280" }}>
               Risco Zero: Sua página no ar ou seu dinheiro de volta.
             </span>
           </div>
@@ -224,39 +255,51 @@ function PlanCard({ plan }: { plan: Plan }) {
   );
 }
 
-function CtaButton({ variant, label }: { variant: Plan["ctaVariant"]; label: string }) {
+function CtaButton({ variant, label, href }: { variant: Plan["ctaVariant"]; label: string; href: string }) {
   const base =
-    "w-full cursor-pointer rounded-full py-3 text-sm font-semibold transition-all duration-200";
+    "w-full cursor-pointer rounded-full py-3 text-sm font-semibold transition-all duration-200 text-center block";
 
   if (variant === "solid") {
     return (
-      <motion.button
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className={cn(base, "text-white")}
-        style={{ background: "#007bff", boxShadow: "0 0 20px rgba(0,123,255,0.3)" }}
+        className={cn(base, "text-white font-bold")}
+        style={{
+          background: "linear-gradient(135deg, #005bc0 0%, #007bff 60%, #3b9eff 100%)",
+          boxShadow: "0 0 24px rgba(0,123,255,0.45), 0 4px 20px rgba(0,91,192,0.3)",
+        }}
       >
         {label}
-      </motion.button>
+      </motion.a>
     );
   }
 
   if (variant === "outline") {
     return (
-      <motion.button
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         className={cn(base, "border bg-transparent")}
         style={{ borderColor: "rgba(255,255,255,0.15)", color: "#fafafa" }}
       >
         {label}
-      </motion.button>
+      </motion.a>
     );
   }
 
   // dark
   return (
-    <motion.button
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       className={cn(base, "border")}
@@ -267,90 +310,133 @@ function CtaButton({ variant, label }: { variant: Plan["ctaVariant"]; label: str
       }}
     >
       {label}
-    </motion.button>
+    </motion.a>
   );
 }
 
 function ScarcityBanner() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-      className="relative mt-16 mx-auto max-w-2xl overflow-hidden rounded-2xl"
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      className="relative mt-20 mx-auto max-w-3xl"
     >
-      {/* Gradient border via pseudo-layer */}
-      <div
-        className="absolute inset-0 rounded-2xl"
-        style={{
-          padding: "1px",
-          background: "linear-gradient(135deg, rgba(0,123,255,0.4) 0%, rgba(255,255,255,0.06) 50%, rgba(0,123,255,0.15) 100%)",
-        }}
-      >
-        <div className="h-full w-full rounded-2xl" style={{ background: "#0b1021" }} />
-      </div>
-
-      {/* Top ambient glow */}
+      {/* Outer ambient glow — wide diffuse halo */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-10 left-1/2 h-20 w-48 -translate-x-1/2 rounded-full blur-2xl"
-        style={{ background: "rgba(0,123,255,0.12)" }}
+        className="pointer-events-none absolute -inset-8 rounded-3xl"
+        style={{
+          background: "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(0,123,255,0.18) 0%, transparent 70%)",
+          filter: "blur(12px)",
+        }}
       />
 
-      {/* Content */}
-      <div className="relative flex flex-col items-center gap-5 px-8 py-8 text-center sm:px-12">
+      {/* Gradient border shell */}
+      <div
+        className="absolute inset-0 rounded-3xl"
+        style={{
+          padding: "1.5px",
+          background:
+            "linear-gradient(135deg, rgba(0,123,255,0.55) 0%, rgba(255,255,255,0.08) 45%, rgba(0,123,255,0.25) 100%)",
+          borderRadius: "inherit",
+        }}
+      >
+        <div className="h-full w-full rounded-3xl" style={{ background: "rgba(11,16,33,0.92)" }} />
+      </div>
 
-        {/* Live dot + label row */}
-        <div className="flex items-center gap-2.5">
-          <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
-          </span>
-          <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#a1a1aa" }}>
-            Disponibilidade em tempo real
-          </span>
-        </div>
-
-        {/* Main message */}
-        <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold leading-snug sm:text-2xl" style={{ color: "#fafafa" }}>
-            Vagas limitadas esta semana
-          </p>
-          <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
-            Para garantir qualidade máxima e entrega em poucos dias, atendemos{" "}
-            <span className="font-bold" style={{ color: "#ffffff" }}>apenas 4 novos projetos por semana.</span>{" "}
-            Verifique a disponibilidade antes de fechar.
-          </p>
-        </div>
-
-        {/* Slot indicators */}
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            {[1, 2, 3, 4].map((slot) => (
-              <span
-                key={slot}
-                className={cn(
-                  "h-2.5 w-8 rounded-full transition-all",
-                  slot <= 3 ? "bg-red-500/70" : "bg-green-500"
-                )}
-              />
-            ))}
-          </div>
-          <span className="text-xs" style={{ color: "#a1a1aa" }}>
-            <span style={{ color: "#fafafa", fontWeight: 600 }}>1 vaga</span> disponível
-          </span>
-        </div>
-
-        {/* Footer stat row */}
+      {/* Glassmorphism inner content */}
+      <div
+        className="relative overflow-hidden rounded-3xl"
+        style={{
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          background: "rgba(255,255,255,0.02)",
+        }}
+      >
+        {/* Top inner highlight line */}
         <div
-          className="flex items-center gap-2 rounded-full border px-4 py-1.5"
-          style={{ borderColor: "rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.03)" }}
-        >
-          <Users size={13} style={{ color: "#007bff" }} />
-          <span className="text-xs" style={{ color: "#a1a1aa" }}>
-            +47 negócios locais profissionalizados este mês
-          </span>
+          aria-hidden
+          className="absolute top-0 inset-x-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(0,123,255,0.35), transparent)" }}
+        />
+
+        {/* Content */}
+        <div className="flex flex-col items-center gap-6 px-10 py-12 text-center sm:px-16 sm:py-14">
+
+          {/* Live dot + label */}
+          <div className="flex items-center gap-3">
+            <span className="relative flex h-3 w-3 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+            </span>
+            <span
+              className="text-xs font-bold uppercase tracking-[0.18em]"
+              style={{ color: "#6b7280" }}
+            >
+              Disponibilidade em tempo real
+            </span>
+          </div>
+
+          {/* Main headline */}
+          <div className="flex flex-col gap-3">
+            <p
+              className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+              style={{ color: "#fafafa" }}
+            >
+              Vagas limitadas esta semana
+            </p>
+            <p className="max-w-lg text-base leading-relaxed" style={{ color: "#9ca3af" }}>
+              Para garantir qualidade máxima e entrega em poucos dias, atendemos{" "}
+              <span className="font-bold" style={{ color: "#ffffff" }}>
+                apenas 4 novos projetos por semana.
+              </span>{" "}
+              Verifique a disponibilidade antes de fechar.
+            </p>
+          </div>
+
+          {/* Slot indicators */}
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2">
+              {[1, 2, 3, 4].map((slot) => (
+                <span
+                  key={slot}
+                  className={cn(
+                    "h-3 w-12 rounded-full transition-all",
+                    slot <= 3
+                      ? "bg-red-500/60"
+                      : "bg-green-500"
+                  )}
+                  style={
+                    slot <= 3
+                      ? { boxShadow: "0 0 8px rgba(239,68,68,0.35)" }
+                      : { boxShadow: "0 0 10px rgba(34,197,94,0.5)" }
+                  }
+                />
+              ))}
+            </div>
+            <span className="text-sm" style={{ color: "#9ca3af" }}>
+              <span className="font-bold" style={{ color: "#ffffff" }}>1 vaga</span> disponível agora
+            </span>
+          </div>
+
+          {/* Divider */}
+          <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.05)" }} />
+
+          {/* Footer social proof pill */}
+          <div
+            className="inline-flex items-center gap-2.5 rounded-full border px-5 py-2"
+            style={{
+              borderColor: "rgba(0,123,255,0.2)",
+              background: "rgba(0,123,255,0.06)",
+            }}
+          >
+            <Users size={15} style={{ color: "#007bff" }} />
+            <span className="text-sm font-medium" style={{ color: "#9ca3af" }}>
+              <span className="font-bold" style={{ color: "#ffffff" }}>+47</span> negócios locais profissionalizados este mês
+            </span>
+          </div>
         </div>
       </div>
     </motion.div>
