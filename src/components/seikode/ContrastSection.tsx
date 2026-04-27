@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Settings, TrendingUp } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const fadeUp = (delay = 0) => ({
@@ -105,12 +105,11 @@ function PainCard() {
         ))}
       </ul>
 
-      {/* Visual placeholder */}
-      <AssetPlaceholder
-        icon={<Settings size={56} strokeWidth={1} />}
-        label="[Gráfico de engrenagens — asset via Gemini API]"
-        variant="neutral"
-      />
+      {/* Asset ilustrativo */}
+      <div className="mt-auto overflow-hidden rounded-xl border" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(0,0,0,0.2)" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/asset-dor.svg" alt="Engrenagens travadas representando o mercado lento" className="w-full h-auto" draggable={false} />
+      </div>
     </motion.div>
   );
 }
@@ -157,12 +156,11 @@ function SolutionCard() {
         ))}
       </ul>
 
-      {/* Visual placeholder */}
-      <AssetPlaceholder
-        icon={<TrendingUp size={56} strokeWidth={1} />}
-        label="[Interface de alta conversão — asset via Gemini API]"
-        variant="primary"
-      />
+      {/* Asset ilustrativo */}
+      <div className="mt-auto overflow-hidden rounded-xl border" style={{ borderColor: "rgba(0,123,255,0.15)", background: "rgba(0,0,0,0.2)" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/asset-solucao.svg" alt="Gráfico de crescimento exponencial representando o padrão Seikode" className="w-full h-auto" draggable={false} />
+      </div>
     </motion.div>
   );
 }
@@ -215,28 +213,3 @@ function BulletItem({ text, variant }: { text: string; variant: "pain" | "soluti
   );
 }
 
-function AssetPlaceholder({
-  icon,
-  label,
-  variant,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  variant: Variant;
-}) {
-  const borderColor = variant === "primary" ? "rgba(0,123,255,0.15)" : "rgba(255,255,255,0.06)";
-  const iconColor = variant === "primary" ? "rgba(0,123,255,0.25)" : "rgba(255,255,255,0.1)";
-
-  return (
-    <div
-      className="mt-auto flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed py-8"
-      style={{ borderColor, background: "rgba(0,0,0,0.2)" }}
-      data-asset-placeholder
-    >
-      <span style={{ color: iconColor }}>{icon}</span>
-      <p className="text-center text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
-        {label}
-      </p>
-    </div>
-  );
-}
