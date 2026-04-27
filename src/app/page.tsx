@@ -8,7 +8,7 @@ import { DottedSurface } from "@/components/ui/dotted-surface";
 
 export default function Home() {
   return (
-    <main className="relative flex flex-1 flex-col overflow-hidden" style={{ background: "#000105" }}>
+    <main className="relative flex flex-1 flex-col overflow-hidden bg-transparent">
       <DottedSurface />
 
       <section id="inicio">
