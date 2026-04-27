@@ -33,7 +33,7 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#inicio" className="flex-shrink-0 focus-visible:outline-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-seikode.png" alt="Seikode" className="h-10 w-auto object-contain" />
+            <img src="/logo-seikode.jpeg" alt="Seikode" className="h-10 w-auto object-contain" />
           </a>
 
           {/* Desktop nav links */}
