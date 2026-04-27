@@ -124,7 +124,7 @@ function Badge() {
         className="relative z-10 text-xs font-semibold uppercase tracking-widest"
         style={{ color: "#007bff" }}
       >
-        Sistema de Aceleração B2B
+        Para Negócios Locais e Profissionais
       </span>
     </div>
   );

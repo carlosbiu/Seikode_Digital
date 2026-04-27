@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_URL =
@@ -60,14 +60,15 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "hidden md:inline-flex items-center rounded-full border px-5 py-2 text-sm font-semibold",
+              "hidden md:inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold",
               "transition-all duration-200",
-              "hover:border-[#007bff] hover:bg-[#007bff] hover:text-white",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007bff]"
+              "hover:border-green-500 hover:text-green-400",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
             )}
             style={{ borderColor: "rgba(255,255,255,0.15)", color: "#fafafa" }}
           >
-            Fazer Orçamento
+            <MessageCircle size={15} />
+            Falar no WhatsApp
           </a>
 
           {/* Mobile hamburger */}
