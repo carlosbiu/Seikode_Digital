@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Plan {
@@ -132,18 +132,8 @@ export default function PricingSection() {
           ))}
         </motion.div>
 
-        {/* Live status indicator */}
-        <div className="w-full flex justify-center mt-12">
-          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
-            <span className="relative flex h-3 w-3 flex-shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="text-base md:text-lg" style={{ color: "#a1a1aa" }}>
-              <strong className="font-semibold" style={{ color: "#f4f4f5" }}>Vagas limitadas:</strong> Atendemos apenas <span style={{ color: "#ffffff", fontWeight: 700 }}>4 novos projetos</span> por semana.
-            </span>
-          </div>
-        </div>
+        {/* Scarcity banner */}
+        <ScarcityBanner />
       </div>
     </section>
   );
@@ -278,5 +268,91 @@ function CtaButton({ variant, label }: { variant: Plan["ctaVariant"]; label: str
     >
       {label}
     </motion.button>
+  );
+}
+
+function ScarcityBanner() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      className="relative mt-16 mx-auto max-w-2xl overflow-hidden rounded-2xl"
+    >
+      {/* Gradient border via pseudo-layer */}
+      <div
+        className="absolute inset-0 rounded-2xl"
+        style={{
+          padding: "1px",
+          background: "linear-gradient(135deg, rgba(0,123,255,0.4) 0%, rgba(255,255,255,0.06) 50%, rgba(0,123,255,0.15) 100%)",
+        }}
+      >
+        <div className="h-full w-full rounded-2xl" style={{ background: "#0b1021" }} />
+      </div>
+
+      {/* Top ambient glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-10 left-1/2 h-20 w-48 -translate-x-1/2 rounded-full blur-2xl"
+        style={{ background: "rgba(0,123,255,0.12)" }}
+      />
+
+      {/* Content */}
+      <div className="relative flex flex-col items-center gap-5 px-8 py-8 text-center sm:px-12">
+
+        {/* Live dot + label row */}
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+          </span>
+          <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#a1a1aa" }}>
+            Disponibilidade em tempo real
+          </span>
+        </div>
+
+        {/* Main message */}
+        <div className="flex flex-col gap-2">
+          <p className="text-xl font-bold leading-snug sm:text-2xl" style={{ color: "#fafafa" }}>
+            Vagas limitadas esta semana
+          </p>
+          <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
+            Para garantir qualidade máxima e entrega em poucos dias, atendemos{" "}
+            <span className="font-bold" style={{ color: "#ffffff" }}>apenas 4 novos projetos por semana.</span>{" "}
+            Verifique a disponibilidade antes de fechar.
+          </p>
+        </div>
+
+        {/* Slot indicators */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            {[1, 2, 3, 4].map((slot) => (
+              <span
+                key={slot}
+                className={cn(
+                  "h-2.5 w-8 rounded-full transition-all",
+                  slot <= 3 ? "bg-red-500/70" : "bg-green-500"
+                )}
+              />
+            ))}
+          </div>
+          <span className="text-xs" style={{ color: "#a1a1aa" }}>
+            <span style={{ color: "#fafafa", fontWeight: 600 }}>1 vaga</span> disponível
+          </span>
+        </div>
+
+        {/* Footer stat row */}
+        <div
+          className="flex items-center gap-2 rounded-full border px-4 py-1.5"
+          style={{ borderColor: "rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.03)" }}
+        >
+          <Users size={13} style={{ color: "#007bff" }} />
+          <span className="text-xs" style={{ color: "#a1a1aa" }}>
+            +47 negócios locais profissionalizados este mês
+          </span>
+        </div>
+      </div>
+    </motion.div>
   );
 }
