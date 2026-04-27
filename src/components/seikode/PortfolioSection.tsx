@@ -121,7 +121,7 @@ function ProjectCard({ project }: { project: Project }) {
       <img
         src={project.image}
         alt={`Preview do site ${project.name}`}
-        className="w-full h-auto translate-y-0 transition-transform duration-[4000ms] ease-in-out group-hover:-translate-y-[70%]"
+        className="w-full h-auto translate-y-0 transition-transform duration-[20000ms] ease-linear group-hover:-translate-y-[70%]"
         draggable={false}
       />
 

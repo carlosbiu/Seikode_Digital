@@ -131,6 +131,13 @@ export default function PricingSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Scarcity warning */}
+        <div className="mt-16 mx-auto max-w-3xl p-6 rounded-2xl bg-orange-950/30 border border-orange-500/30 text-center shadow-lg shadow-orange-900/10">
+          <p className="text-orange-200 text-sm md:text-base">
+            ⚠️ <strong className="text-orange-400 font-semibold">Atenção:</strong> Para garantirmos a entrega em poucos dias com qualidade máxima, atendemos <span className="text-white font-bold">apenas 4 novos projetos por semana</span>. Fale conosco agora para verificar a disponibilidade na agenda.
+          </p>
+        </div>
       </div>
     </section>
   );
