@@ -134,13 +134,13 @@ export default function PricingSection() {
 
         {/* Live status indicator */}
         <div className="w-full flex justify-center mt-12">
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
-            <span className="relative flex h-2.5 w-2.5">
+          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md shadow-2xl">
+            <span className="relative flex h-3 w-3 flex-shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
-            <span className="text-sm" style={{ color: "#a1a1aa" }}>
-              <strong className="font-medium" style={{ color: "#e4e4e7" }}>Vagas limitadas:</strong> Atendemos apenas 4 novos projetos por semana.
+            <span className="text-base md:text-lg" style={{ color: "#a1a1aa" }}>
+              <strong className="font-semibold" style={{ color: "#f4f4f5" }}>Vagas limitadas:</strong> Atendemos apenas <span style={{ color: "#ffffff", fontWeight: 700 }}>4 novos projetos</span> por semana.
             </span>
           </div>
         </div>
