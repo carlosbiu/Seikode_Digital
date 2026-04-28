@@ -75,7 +75,10 @@ export default function HeroSection() {
 
         {/* CTA */}
         <motion.div variants={fadeUp}>
-          <motion.button
+          <motion.a
+            href={`https://wa.me/5527998346547?text=${encodeURIComponent("Olá! Quero profissionalizar meu negócio hoje. Pode me dar mais detalhes?")}`}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -90,7 +93,7 @@ export default function HeroSection() {
               size={18}
               className="transition-transform duration-200 group-hover:translate-x-1"
             />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </motion.div>
     </section>
