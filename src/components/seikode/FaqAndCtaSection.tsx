@@ -26,7 +26,7 @@ const faqs: FaqItem[] = [
 ];
 
 const WHATSAPP_URL =
-  "https://wa.me/5527997742494?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20gratuito%20para%20meu%20neg%C3%B3cio.";
+  "https://wa.me/5527998346547?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20gratuito%20para%20meu%20neg%C3%B3cio.";
 
 export default function FaqAndCtaSection() {
   return (

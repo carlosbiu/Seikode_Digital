@@ -6,7 +6,7 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WHATSAPP_URL =
-  "https://wa.me/5527997742494?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento.";
+  "https://wa.me/5527998346547?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento.";
 
 const navLinks = [
   { label: "Início", href: "#inicio" },

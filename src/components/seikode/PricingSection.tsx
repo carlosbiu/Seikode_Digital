@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Check, ShieldCheck, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const WA_NUMBER = "5527997742494";
+const WA_NUMBER = "5527998346547";
 const wa = (msg: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 interface Plan {
