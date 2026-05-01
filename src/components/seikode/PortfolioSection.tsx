@@ -80,8 +80,8 @@ export default function PortfolioSection() {
             Veja o Nível das Nossas Entregas.
           </h2>
           <p className="max-w-xl text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
-            Aviso: Os projetos abaixo são demonstrações técnicas para atestar nossa qualidade de
-            design e conversão. Clique para ver ao vivo.
+            Projetos demonstrativos desenvolvidos com padrões reais de mercado para cada nicho.
+            Clique em qualquer um para navegar ao vivo.
           </p>
         </motion.div>
 

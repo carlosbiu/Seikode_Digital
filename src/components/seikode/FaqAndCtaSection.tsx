@@ -23,6 +23,22 @@ const faqs: FaqItem[] = [
     q: "E se eu já tiver um site antigo?",
     a: "Nós o substituímos por uma máquina de conversão moderna, mantendo o seu domínio atual intacto sem perder os acessos que você já tem.",
   },
+  {
+    q: "Vocês cuidam da hospedagem e do domínio?",
+    a: "Sim. No primeiro ano, nós configuramos tudo pra você: domínio personalizado (seunegocio.com.br) e hospedagem profissional. Você não precisa mexer com nada técnico — recebe o site pronto e funcionando.",
+  },
+  {
+    q: "Como funciona o pagamento?",
+    a: "Os planos Start e Pro são pagamento único, feito via Pix ou cartão. Trabalhamos com 50% no início do projeto e 50% na entrega final. O plano Ecossistema tem o setup inicial mais a mensalidade do serviço de automação.",
+  },
+  {
+    q: "Eu preciso enviar os textos e fotos do site?",
+    a: "A gente te ajuda em todo o processo. Se você já tem materiais (fotos, textos, logo), aproveitamos. Se não tiver, orientamos exatamente o que precisamos e adaptamos a partir do seu Instagram, Google Meu Negócio ou de uma conversa rápida com você.",
+  },
+  {
+    q: "E se eu quiser mudar algo depois que o site estiver no ar?",
+    a: "Pequenos ajustes (trocar telefone, adicionar um serviço, mudar uma foto) entram como cortesia nos primeiros 30 dias após a entrega. Depois disso, alterações são cobradas separadamente ou inclusas no plano Ecossistema, que tem manutenção mensal.",
+  },
 ];
 
 const WHATSAPP_URL =

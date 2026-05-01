@@ -24,9 +24,9 @@ const painPoints = [
 ];
 
 const solutionPoints = [
-  "Landing Pages de alto nível em poucos dias,",
-  "Foco absoluto em conversão (CRO),",
-  "Sem enrolação, direto ao ponto.",
+  "Site profissional pronto em poucos dias,",
+  "Feito pra transformar visitante em cliente,",
+  "Sem reuniões intermináveis nem enrolação.",
 ];
 
 export default function ContrastSection() {
@@ -90,7 +90,7 @@ function PainCard() {
       />
 
       {/* Badge */}
-      <CardBadge label="A Realidade B2B" variant="neutral" />
+      <CardBadge label="Como o mercado funciona hoje" variant="neutral" />
 
       {/* Title */}
       <h2 className="text-3xl font-bold tracking-tight leading-snug" style={{ color: "#fafafa" }}>
@@ -145,8 +145,8 @@ function SolutionCard() {
 
       {/* Title */}
       <h2 className="text-3xl font-bold tracking-tight leading-snug" style={{ color: "#fafafa" }}>
-        Sua presença{" "}
-        <span style={{ color: "#007bff" }}>impecável.</span>
+        Direto, rápido, feito pra{" "}
+        <span style={{ color: "#007bff" }}>vender.</span>
       </h2>
 
       {/* Bullets */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ShieldCheck, Users } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WA_NUMBER = "5527998346547";
@@ -26,13 +26,14 @@ const plans: Plan[] = [
   {
     id: "start",
     title: "Start",
-    description: "Para quem precisa sair da invisibilidade hoje.",
+    description: "Para quem ainda não tem site e precisa parar de perder cliente pra quem aparece melhor no Google.",
     price: "R$ 300",
     priceNote: "pagamento único",
     features: [
-      "Página Simples (One Page)",
-      "Botão Flutuante de WhatsApp",
-      "Otimizada para Celulares",
+      "Página única completa: serviços, sobre você e contato em uma rolagem",
+      "Botão de WhatsApp fixo na tela (cliente fala com você de qualquer parte do site)",
+      "Otimizada pra celular, onde 9 em cada 10 clientes vão acessar",
+      "Hospedagem e domínio configurados pra você (sem dor de cabeça técnica)",
     ],
     cta: "Escolher Start",
     ctaVariant: "outline",
@@ -43,14 +44,15 @@ const plans: Plan[] = [
     badge: "MAIS ESCOLHIDO",
     title: "Pro",
     titleColor: "#007bff",
-    description: "Para quem busca autoridade e design superior.",
+    description: "Para quem cobra bem pelo serviço e precisa de presença digital à altura. Ideal pra clínicas, consultórios e profissionais que querem se posicionar como referência.",
     price: "R$ 500",
     priceNote: "pagamento único",
     features: [
-      "Tudo do Start +",
-      "Design Sofisticado",
-      "Seções Extras de Conversão",
-      "Detalhamento Avançado de Serviços",
+      "Tudo do plano Start, mais:",
+      "Design personalizado com a identidade do seu negócio (cores, tipografia, sensação visual)",
+      "Seções extras pensadas pra converter: depoimentos, antes e depois, perguntas frequentes",
+      "Apresentação detalhada de cada serviço, com fotos e descrições",
+      "Integração com Google Maps e seu perfil do Google Meu Negócio",
     ],
     cta: "Escolher Pro",
     ctaVariant: "solid",
@@ -60,14 +62,15 @@ const plans: Plan[] = [
   {
     id: "ecosystem",
     title: "Ecossistema",
-    description: "Para quem quer escalar e automatizar o atendimento.",
+    description: "Para quem já tem fluxo de clientes e perde venda por não responder mensagem a tempo. O site trabalha junto com automações que atendem 24h e organizam todos os contatos.",
     price: "R$ 1.000",
     priceNote: "setup + R$ 300/mês",
     features: [
-      "Página Pro +",
-      "Integração Direta com WhatsApp (n8n)",
-      "Automação de Atendimento 24h",
-      "Gestão Eficiente de Leads",
+      "Tudo do plano Pro, mais:",
+      "Atendimento automático no WhatsApp: responde dúvidas comuns, agenda horários e qualifica o cliente antes de chegar em você",
+      "Funcionamento 24h, inclusive fora do horário comercial e nos fins de semana",
+      "Painel com todos os leads organizados num só lugar (nada se perde)",
+      "Manutenção mensal inclusa: ajustes, atualizações e suporte contínuo",
     ],
     cta: "Aplicar para o Ecossistema",
     ctaVariant: "dark",
@@ -396,47 +399,6 @@ function ScarcityBanner() {
             </p>
           </div>
 
-          {/* Slot indicators */}
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center gap-2">
-              {[1, 2, 3, 4].map((slot) => (
-                <span
-                  key={slot}
-                  className={cn(
-                    "h-3 w-12 rounded-full transition-all",
-                    slot <= 3
-                      ? "bg-red-500/60"
-                      : "bg-green-500"
-                  )}
-                  style={
-                    slot <= 3
-                      ? { boxShadow: "0 0 8px rgba(239,68,68,0.35)" }
-                      : { boxShadow: "0 0 10px rgba(34,197,94,0.5)" }
-                  }
-                />
-              ))}
-            </div>
-            <span className="text-sm" style={{ color: "#9ca3af" }}>
-              <span className="font-bold" style={{ color: "#ffffff" }}>1 vaga</span> disponível agora
-            </span>
-          </div>
-
-          {/* Divider */}
-          <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.05)" }} />
-
-          {/* Footer social proof pill */}
-          <div
-            className="inline-flex items-center gap-2.5 rounded-full border px-5 py-2"
-            style={{
-              borderColor: "rgba(0,123,255,0.2)",
-              background: "rgba(0,123,255,0.06)",
-            }}
-          >
-            <Users size={15} style={{ color: "#007bff" }} />
-            <span className="text-sm font-medium" style={{ color: "#9ca3af" }}>
-              <span className="font-bold" style={{ color: "#ffffff" }}>+47</span> negócios locais profissionalizados este mês
-            </span>
-          </div>
         </div>
       </div>
     </motion.div>
